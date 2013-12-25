@@ -2,10 +2,20 @@ treeToDos = [];
 currentListIndex = 0;
 $(document).ready(function() {
 	//alert('in jquery');
+	
 	$('#listNotes').on('click', 'li', function () {
-		//alert(listToDos[0][0]);
-		loadPopupBox($(this).index());
+		$('#txtAddToDo').val('');
+		var idx = $(this).index();
+		$('#listToDos').html('');
+		$('#popup_box').fadeIn("slow");
+		var liStr = '';
+		for (var i = 1; i < treeToDos[idx].length ; i++) {
+			liStr += '<li>' + treeToDos[idx][i] + ' <input type="button" id="btnEdit' + i + '" value="Edit"> <input type="button" id="btnDelete' + i + '" value="Delete"></li>';
+		};
+		$('#listToDos').html(liStr);
+		currentListIndex = idx;
 	});
+	
 	$('#btnAddNote').on('click', function() {
 		var text = $.trim($('#txtnoteName').val());
 		if(!$('#txtnoteName').is(':visible')) 
@@ -14,7 +24,6 @@ $(document).ready(function() {
 			$('#txtnoteName').hide();
 			$('#txtnoteName').val('');
 			var liStr = '<li>' + text + '</li>';
-			//alert(liStr);
 			$('#listNotes').append(liStr);
 			treeToDos.push([text]);
 		}
@@ -24,28 +33,20 @@ $(document).ready(function() {
 		var str = $.trim($('#txtAddToDo').val());
 		if(str=='') return;
 		treeToDos[currentListIndex].push(str);
-		$('#listToDos li:last').before('<li>' + str + '</li>');
+		var temp = treeToDos[currentListIndex].length - 1;
+		var liStr = '<li>' + str + ' <input type="button" id="btnEdit' + temp + '" value="Edit"> <input type="button" id="btnDelete' + temp + '" value="Delete"></li>';
+		if($('#items li').length >= 1 )
+			$('#listToDos li:last').before(liStr);
+		else
+			$('#listToDos').append(liStr);
+		$('#txtAddToDo').focus();
 	})
 
+
+	
 	//closePopupBox();
 	$('#popupBoxClose').click(function () {
-	    unloadPopupBox();
+	    $('#popup_box').fadeOut("fast");
+		
 	});
-
-	function unloadPopupBox() { // TO Unload the Popupbox
-	    $('#popup_box').fadeOut("slow");
-
-	}
-
-	function loadPopupBox(idx) { // To Load the Popupbox
-		$('#listToDos').html('');
-		$('#popup_box').fadeIn("slow");
-		var liStr = '';
-		for (var i = 1; i < treeToDos[idx].length ; i++) {
-			liStr += '<li>' + treeToDos[idx][i] + '</li>';
-		};
-		liStr += '<li><input type="text" id="txtAddToDo"><input type="button" id="btnAddToDo" value="Add"></li>';
-		$('#listToDos').html(liStr);
-		currentListIndex = idx;
-	}
 });	

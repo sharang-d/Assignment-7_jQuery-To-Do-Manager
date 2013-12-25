@@ -7,6 +7,7 @@
 	<script src="Sharang-Dashputre_jQuery-ToDo.js"></script>
 </head>
 <body>
+	<!-- Divide the page into two parts. Left Side for Notes and right side for Add -->
 	<div id="rightSide">
 		<input type="button" id="btnAddNote" value="ADD">
 		<input type="text" id="txtnoteName" style="display: none;">
@@ -14,10 +15,11 @@
 	<div id="leftSide">
 		<ul id="listNotes"></ul>
 	</div>
-	<div id="popup_box">    <!-- OUR PopupBox DIV-->
-    	<a id="popupBoxClose">Close</a>
+	<!-- Hidden div for Popup box -->
+	<div id="popup_box">
+    	<button id="popupBoxClose">Close</button>
     	<ul id="listToDos"></ul>
+    	<input type="text" id="txtAddToDo"><input type="button" id="btnAddToDo" value="Add">
 	</div>
 </body>
 </html>
-<!-- style="display: none;" -->

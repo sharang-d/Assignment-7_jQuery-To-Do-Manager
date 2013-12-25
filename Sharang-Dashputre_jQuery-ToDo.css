@@ -31,14 +31,13 @@
     background:#FFFFFF;  
     left: 300px;
     top: 150px;
-    z-index:100; /* Layering ( on-top of others) */
+    z-index:1001; /* Layering ( on-top of others) */
     margin-left: 15px;  
     border:2px solid #ff0000;      
-    padding:15px;  
-    font-size:15px;  
     -moz-box-shadow: 0 0 5px #ff0000;
     -webkit-box-shadow: 0 0 5px #ff0000;
     box-shadow: 0 0 5px #ff0000;
+    overflow: auto;
 }
 
 #popupBoxClose {

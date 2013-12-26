@@ -10,7 +10,7 @@ $(document).ready(function() {
 		$('#popup_box').fadeIn("slow");
 		var liStr = '';
 		for (var i = 1; i < treeToDos[idx].length ; i++) {
-			liStr += '<li>' + treeToDos[idx][i] + ' <input type="button" id="btnEdit' + i + '" value="Edit"> <input type="button" id="btnDelete' + i + '" value="Delete"></li>';
+			liStr += '<li>' + treeToDos[idx][i] + ' <button id="btnEdit' + i + '">Edit</button><button id="btnDelete' + i + '">Delete</button></li>';
 		};
 		$('#listToDos').html(liStr);
 		currentListIndex = idx;
@@ -34,7 +34,7 @@ $(document).ready(function() {
 		if(str=='') return;
 		treeToDos[currentListIndex].push(str);
 		var temp = treeToDos[currentListIndex].length - 1;
-		var liStr = '<li>' + str + ' <input type="button" id="btnEdit' + temp + '" value="Edit"> <input type="button" id="btnDelete' + temp + '" value="Delete"></li>';
+		var liStr = '<li>' + str + ' <button id="btnEdit' + temp + '">Edit</button><button id="btnDelete' + temp + '">Delete</button></li>';
 		if($('#items li').length >= 1 )
 			$('#listToDos li:last').before(liStr);
 		else
@@ -43,14 +43,29 @@ $(document).ready(function() {
 	})
 
 	
-	$('#listToDos').on('click', 'li input', function () {
-		var patt1 = /btnEdit.+/;	
-		if(patt1.test(this.id))	return; // if edit button is clicked don't do anything for now
-		var _id = $(this).parent().index() + 1; // get position of li in ul when added with 1 becomes position of element in array
-		treeToDos[currentListIndex].splice(_id, 1);		
-		$(this).parent().remove();
+	$('#listToDos').on('click', 'li button', function () {
+		var patt1 = /btnEdit([0-9]+)/;
+		var patt2 = /btnDone([0-9]+)/;	
+		if(patt1.test(this.id)) {
+			var temp = this.id.match(patt1)[1];
+			var newLi = '<input id="txtEdit' + temp + '" value="' + treeToDos[currentListIndex][temp] + '"><button id="btnDone' + temp + '">Done</button>';
+			$(this).parent().html(newLi);
+		}		
+		else if(patt2.test(this.id)) {
+			var done_id = this.id.match(patt2)[1];
+			var text = $.trim($('#txtEdit'+done_id).val());
+			if(text=='')	return;
+			treeToDos[currentListIndex][done_id] = text;
+			var newLi = text + '<button id="btnEdit' + done_id + '">Edit</button><button id="btnDelete' + done_id + '">Delete</button>';
+			$(this).parent().html(newLi);
+		}
+		else {
+			var _id = $(this).parent().index() + 1; // get position of li in ul when added with 1 becomes position of element in array
+			treeToDos[currentListIndex].splice(_id, 1);		
+			$(this).parent().remove();
+		}
 	});
-	
+		
 	
 	//closePopupBox();
 	$('#popupBoxClose').click(function () {

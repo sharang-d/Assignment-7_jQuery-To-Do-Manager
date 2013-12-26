@@ -1,9 +1,14 @@
+#container {
+	width: 50% ;
+	margin-left: auto ;
+	margin-right: auto ;
+	border: 1px solid #333333;
+	overflow: auto;
+}
+
+
 #rightSide {
-	position: absolute;
-	top: 0;
- 	right: 0;
- 	width: 10%;
- 	background-color: #AA00DD;
+	float: right;	
 }
 
 #listNotes li {
@@ -13,8 +18,8 @@
 	width:200px;
 	background:#ffeed5;
 	text-align:center;
-    margin-left: 30px;
-    margin-top: 20px;
+	margin-left: 30px;
+	margin-top: 20px;
 }
 
 #listToDos li {
@@ -24,28 +29,28 @@
 }
 
 #popup_box { 
-    display:none; 
-    position:fixed;  
-    height:300px;  
-    width:600px;  
-    background:#FFFFFF;  
-    left: 300px;
-    top: 150px;
-    z-index:1001; /* Layering ( on-top of others) */
-    margin-left: 15px;  
-    border:2px solid #ff0000;      
-    -moz-box-shadow: 0 0 5px #ff0000;
-    -webkit-box-shadow: 0 0 5px #ff0000;
-    box-shadow: 0 0 5px #ff0000;
-    overflow: auto;
+	display:none; 
+	position:fixed;  
+	height:300px;  
+	width:600px;  
+	background:#FFFFFF;  
+	left: 480px;
+	top: 150px;
+	z-index:1001; /* Layering ( on-top of others) */
+	margin-left: 15px;  
+	border:2px solid #ff0000;      
+	-moz-box-shadow: 0 0 5px #ff0000;
+	-webkit-box-shadow: 0 0 5px #ff0000;
+	box-shadow: 0 0 5px #ff0000;
+	overflow: auto;
 }
 
 #popupBoxClose {
-    font-size:15px;  
-    line-height:15px;  
-    right:0;  
-    top:0;  
-    position:absolute;  
-    color:#6fa5e2;  
-    font-weight:500;      
+	font-size:15px;  
+	line-height:15px;  
+	right:0;  
+	top:0;  
+	position:absolute;  
+	color:#6fa5e2;  
+	font-weight:500;      
 }

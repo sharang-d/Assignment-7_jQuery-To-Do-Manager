@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>To-Do Manager</title>
-	<link rel="stylesheet" type="text/css" href="Sharang-Dashputre_jQuery-ToDo.css">
-	<script src="jquery-1.10.2.js"></script>
-	<script src="Sharang-Dashputre_jQuery-ToDo.js"></script>
+    <title>To-Do Manager</title>
+    <link rel="stylesheet" type="text/css" href="Sharang-Dashputre_jQuery-ToDo.css">
+    <script src="jquery-1.10.2.js"></script>
+    <script src="Sharang-Dashputre_jQuery-ToDo.js"></script>
 </head>
+
 <body>
-	<!-- Divide the page into two parts. Left Side for Notes and right side for Add -->
-	<div id="rightSide">
-		<input type="button" id="btnAddNote" value="ADD">
-		<input type="text" id="txtnoteName" style="display: none;">
-	</div>
-	<div id="leftSide">
-		<ul id="listNotes"></ul>
-	</div>
-	<!-- Hidden div for Popup box -->
-	<div id="popup_box">
-    	<button id="popupBoxClose">Close</button>
-    	<ul id="listToDos"></ul>
-    	<input type="text" id="txtAddToDo"><input type="button" id="btnAddToDo" value="Add">
-	</div>
+    <!-- Divide the page into two parts. Left Side for Notes and right side for Add -->
+    <div id="container">
+        <div id="rightSide">
+            <input type="button" id="btnAddNote" value="ADD">
+            <input type="text" id="txtnoteName" style="display: none;">
+        </div>
+
+        <div id="leftSide">
+            <ul id="listNotes"></ul>
+        </div>
+    </div>
+    <!-- Hidden div for Popup box -->
+    <div id="popup_box">
+        <button id="popupBoxClose">Close</button>
+        <ul id="listToDos"></ul>
+        <input type="text" id="txtAddToDo">
+        <input type="button" id="btnAddToDo" value="Add">
+    </div>
 </body>
+
 </html>

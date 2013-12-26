@@ -8,6 +8,7 @@ $(document).ready(function () {
         var idx = $(this).index();
         $('#listToDos').html('');
         $('#popup_box').fadeIn("slow");
+	$("#container").fadeTo("fast",0.3);
         var liStr = '';
         for (var i = 1; i < treeToDos[idx].length; i++) {
             liStr += '<li>' + treeToDos[idx][i] + ' <button id="btnEdit' + i + '">Edit</button><button id="btnDelete' + i + '">Delete</button></li>';
@@ -58,7 +59,7 @@ $(document).ready(function () {
             var newLi = text + '<button id="btnEdit' + done_id + '">Edit</button><button id="btnDelete' + done_id + '">Delete</button>';
             $(this).parent().html(newLi);
         } else {
-            var _id = $(this).parent().index() + 1; // get position of li in ul when added with 1 becomes position of element in array
+            var _id = $(this).parent().index() + 1; // get position of li in ul. When added with 1 it becomes position of element in array
             treeToDos[currentListIndex].splice(_id, 1);
             $(this).parent().remove();
         }
@@ -68,6 +69,6 @@ $(document).ready(function () {
     //closePopupBox();
     $('#popupBoxClose').click(function () {
         $('#popup_box').fadeOut("fast");
-
+	$("#container").fadeTo("fast", 1);
     });
 });

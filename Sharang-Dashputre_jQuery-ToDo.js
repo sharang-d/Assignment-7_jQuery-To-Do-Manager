@@ -23,7 +23,10 @@ $(document).ready(function () {
     $('#btnAddNote').on('click', function () {
         var text = $.trim($('#txtnoteName').val()); // trim whitespace
         if (!$('#txtnoteName').is(':visible'))
-            $('#txtnoteName').show();
+        {
+	    $('#txtnoteName').show();
+            $('#txtnoteName').focus();
+	}
         else if (text != '') {
             $('#txtnoteName').hide();
             $('#txtnoteName').val('');

@@ -42,7 +42,15 @@ $(document).ready(function() {
 		$('#txtAddToDo').focus();
 	})
 
-
+	
+	$('#listToDos').on('click', 'li input', function () {
+		var _id = $(this).parent().index() + 1; // get position of li in ul when added with 1 becomes position of element in array
+		//console.log($(this).parent());
+		//alert(_id);
+		treeToDos[currentListIndex].splice(_id, 1);		
+		$(this).parent().remove();
+	});
+	
 	
 	//closePopupBox();
 	$('#popupBoxClose').click(function () {

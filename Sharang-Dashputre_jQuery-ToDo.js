@@ -44,9 +44,9 @@ $(document).ready(function() {
 
 	
 	$('#listToDos').on('click', 'li input', function () {
+		var patt1 = /btnEdit.+/;	
+		if(patt1.test(this.id))	return; // if edit button is clicked don't do anything for now
 		var _id = $(this).parent().index() + 1; // get position of li in ul when added with 1 becomes position of element in array
-		//console.log($(this).parent());
-		//alert(_id);
 		treeToDos[currentListIndex].splice(_id, 1);		
 		$(this).parent().remove();
 	});
